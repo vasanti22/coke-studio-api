@@ -4,23 +4,23 @@ import SongDetails from './SongDetails';
 
 const Songs = () => {
     
-    const [videos, setVideos] = useState([]);
+    const [songs, setSongs] = useState([]);
     
     useEffect(() => {
-        getVideos();
+        getSongs();
     }, []);
     
-    const getVideos = async () => {
+    const getSongs = async () => {
         const data = await fetch(COKE_STUDIO_MUSIC_API);
         const json = await data.json();
-        console.log(json[1].song);
-        setVideos(json);
+        //console.log(json[1].song);
+        setSongs(json);
     }
     
     return (
-        <div className='video-container'>
-        {videos.map((video) => (
-            <SongDetails key={video.id} info = {video} />
+        <div className='song-container'>
+        {songs.map((song) => (
+            <SongDetails key={song.id} info = {song} />
          ))
         }
     </div>
